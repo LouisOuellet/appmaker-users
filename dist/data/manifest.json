@@ -15,6 +15,6 @@
     },
     "name": "users",
     "status": true,
-    "build": 6,
+    "build": 7,
     "version": "21.10-dev"
 }
