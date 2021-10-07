@@ -1,19 +1,7 @@
 {
     "repository": {
-        "name": "appmaker-users",
-        "branch": "dev",
-        "manifest": "\/dist\/data\/manifest.json",
-        "host": {
-            "git": "https:\/\/github.com\/LouisOuellet\/",
-            "raw": "https:\/\/raw.githubusercontent.com\/LouisOuellet\/"
-        },
-        "branches": [
-            "main",
-            "beta",
-            "dev"
-        ]
+        "branch": "dev"
     },
-    "name": "users",
-    "build": 9,
+    "build": 1,
     "version": "21.10-dev"
 }
