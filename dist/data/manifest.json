@@ -1,7 +1,14 @@
 {
     "repository": {
-        "branch": "pre-release"
+        "name": "appmaker-users",
+        "branch": "pre-release",
+        "manifest": "\/dist\/data\/manifest.json",
+        "host": {
+            "git": "https:\/\/github.com\/LouisOuellet\/",
+            "raw": "https:\/\/raw.githubusercontent.com\/LouisOuellet\/"
+        }
     },
-    "build": 3,
+    "name": "users",
+    "build": 4,
     "version": "21.10-pre-release"
 }
