@@ -1,7 +1,7 @@
 {
     "repository": {
-        "branch": "dev"
+        "branch": "pre-release"
     },
-    "build": 2,
-    "version": "21.10-dev"
+    "build": 3,
+    "version": "21.10-pre-release"
 }
