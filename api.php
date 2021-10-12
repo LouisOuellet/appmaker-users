@@ -1,12 +1,6 @@
 <?php
 class usersAPI extends CRUDAPI {
 
-	public function fetch($request = null, $data = null){
-		if($data != null){
-			if(!is_array($data)){ $data = json_decode($data, true); }
-		}
-	}
-
 	public function subscribe($request = null, $data = null){
 		if($data != null){
 			if(!is_array($data)){ $data = json_decode($data, true); }
