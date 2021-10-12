@@ -1,5 +1,84 @@
 <?php
 class usersAPI extends CRUDAPI {
+
+	public function fetch($request = null, $data = null){
+		if($data != null){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+		}
+	}
+
+	public function subscribe($request = null, $data = null){
+		if($data != null){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			if(!isset($data['user'])){ $data['user'] = $this->Auth->User['id']; }
+			if(isset($data['category'],$data['sub_category'])){
+				$exist = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `category` = ? AND `sub_category` = ? AND `relationship` = ? AND `link_to` = ?',$data['category'],$data['sub_category'],'users',$data['user'])->fetchAll();
+				if($exist != null){
+					return [
+						"error" => $this->Language->Field["Already subscribed"],
+						"request" => $request,
+						"data" => $data,
+					];
+				} else {
+					$id = $this->Auth->create('subscriptions',[
+						'category' => $data['category'],
+						'sub_category' => $data['sub_category'],
+						'relationship' => 'users',
+						'link_to' => $data['user'],
+					]);
+					return [
+						"success" => $this->Language->Field["User was subscribed"],
+						"request" => $request,
+						"data" => $data,
+						"output" => [
+							"subscription" => $this->Auth->read('subscriptions',$id)->all()[0];,
+						],
+					];
+				}
+			} else {
+				return [
+					"error" => $this->Language->Field["Unknown subscription"],
+					"request" => $request,
+					"data" => $data,
+				];
+			}
+		}
+	}
+
+	public function unsubscribe($request = null, $data = null){
+		if($data != null){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			if(!isset($data['user'])){ $data['user'] = $this->Auth->User['id']; }
+			if(isset($data['category'],$data['sub_category'])){
+				$exist = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `category` = ? AND `sub_category` = ? AND `relationship` = ? AND `link_to` = ?',$data['category'],$data['sub_category'],'users',$data['user'])->fetchAll();
+				if($exist != null){
+					$subscription = $exist->all()[0];
+					$this->Auth->delete('subscriptions',$subscription['id']);
+					return [
+						"success" => $this->Language->Field["User was unsubscribed"],
+						"request" => $request,
+						"data" => $data,
+						"output" => [
+							"subscription" => $subscription,
+						],
+					];
+				} else {
+					return [
+						"error" => $this->Language->Field["Not subscribed"],
+						"request" => $request,
+						"data" => $data,
+					];
+				}
+			} else {
+				return [
+					"error" => $this->Language->Field["Unknown subscription"],
+					"request" => $request,
+					"data" => $data,
+				];
+			}
+		}
+	}
+
 	public function create($request = null, $data = null){
 		if($data != null){
 			if(!is_array($data)){ $data = json_decode($data, true); }
@@ -29,6 +108,7 @@ class usersAPI extends CRUDAPI {
 			}
 		}
 	}
+
 	public function update($request = null, $data = null){
 		if($data != null){
 			if(!is_array($data)){ $data = json_decode($data, true); }
