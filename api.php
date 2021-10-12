@@ -25,7 +25,7 @@ class usersAPI extends CRUDAPI {
 						"request" => $request,
 						"data" => $data,
 						"output" => [
-							"subscription" => $this->Auth->read('subscriptions',$id)->all()[0];,
+							"subscription" => $this->Auth->read('subscriptions',$id)->all()[0],
 						],
 					];
 				}
