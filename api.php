@@ -1,6 +1,36 @@
 <?php
 class usersAPI extends CRUDAPI {
 
+	public function get($request = null, $data = null){
+		if($data != null){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			$get = parent::get($request, $data);
+			if(isset($get['success'])){
+				$categories = $this->Auth->query('SELECT * FROM `categories` WHERE `relationship` = ?','subscriptions')->fetchAll();
+				if($categories != null){
+					$categories = $categories->all();
+					$get['output']['categories'] = $categories;
+					$sub_categories = $this->Auth->query('SELECT * FROM `sub_categories` WHERE `relationship` = ?','subscriptions')->fetchAll();
+					if($sub_categories != null){
+						$sub_categories = $sub_categories->all();
+						$get['output']['sub_categories'] = $sub_categories;
+						return $get;
+					} else {
+						unset($get['success']);
+						$get['error'] = $this->Language->Field["Unable to find subscriptions sub_categories"];
+						return $get;
+					}
+				} else {
+					unset($get['success']);
+					$get['error'] = $this->Language->Field["Unable to find subscriptions categories"];
+					return $get;
+				}
+			} else {
+				return $get;
+			}
+		}
+	}
+
 	public function subscribe($request = null, $data = null){
 		if($data != null){
 			if(!is_array($data)){ $data = json_decode($data, true); }
