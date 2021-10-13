@@ -14,7 +14,16 @@ class usersAPI extends CRUDAPI {
 					if($sub_categories != null){
 						$sub_categories = $sub_categories->all();
 						$get['output']['sub_categories'] = $sub_categories;
-						return $get;
+						$subscriptions = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `relationship` = ? AND `link_to` = ?','users',$this->Auth->User['id'])->fetchAll();
+						if($subscriptions != null){
+							$subscriptions = $subscriptions->all();
+							$get['output']['subscriptions'] = $subscriptions;
+							return $get;
+						} else {
+							unset($get['success']);
+							$get['error'] = $this->Language->Field["Unable to find subscriptions"];
+							return $get;
+						}
 					} else {
 						unset($get['success']);
 						$get['error'] = $this->Language->Field["Unable to find subscriptions sub categories"];

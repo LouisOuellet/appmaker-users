@@ -38,5 +38,6 @@
 		"Unknown subscription": "Unknown subscription",
 		"An error occured during subscription": "An error occured during subscription",
 		"User not subscribed": "User not subscribed",
-		"Unable to find the subscription": "Unable to find the subscription"
+		"Unable to find the subscription": "Unable to find the subscription",
+		"Unable to find subscriptions": "Unable to find subscriptions"
 }
