@@ -6,13 +6,11 @@ class usersAPI extends CRUDAPI {
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			$get = parent::get($request, $data);
 			if(isset($get['success'])){
-				$categories = $this->Auth->query('SELECT * FROM `categories` WHERE `relationship` = ?','subscriptions')->fetchAll();
-				if($categories != null){
-					$categories = $categories->all();
+				$categories = $this->Auth->query('SELECT * FROM `categories` WHERE `relationship` = ?','subscriptions')->fetchAll()->all();
+				if(!empty($categories)){
 					$get['output']['categories'] = $categories;
-					$sub_categories = $this->Auth->query('SELECT * FROM `sub_categories` WHERE `relationship` = ?','subscriptions')->fetchAll();
-					if($sub_categories != null){
-						$sub_categories = $sub_categories->all();
+					$sub_categories = $this->Auth->query('SELECT * FROM `sub_categories` WHERE `relationship` = ?','subscriptions')->fetchAll()->all();
+					if(!empty($sub_categories)){
 						$get['output']['sub_categories'] = $sub_categories;
 						return $get;
 					} else {
@@ -36,17 +34,8 @@ class usersAPI extends CRUDAPI {
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			if(!isset($data['user'])){ $data['user'] = $this->Auth->User['id']; }
 			if(isset($data['category'],$data['sub_category'])){
-				$exist = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `category` = ? AND `sub_category` = ? AND `relationship` = ? AND `link_to` = ?',$data['category'],$data['sub_category'],'users',$data['user'])->fetchAll();
-				if($exist != null){
-					return [
-						"error" => $this->Language->Field["Already subscribed"],
-						"request" => $request,
-						"data" => $data,
-						"output" => [
-							"subscriptions" => $exist->all(),
-						],
-					];
-				} else {
+				$exist = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `category` = ? AND `sub_category` = ? AND `relationship` = ? AND `link_to` = ?',$data['category'],$data['sub_category'],'users',$data['user'])->fetchAll()->all();
+				if(empty($exist)){
 					$id = $this->Auth->create('subscriptions',[
 						'category' => $data['category'],
 						'sub_category' => $data['sub_category'],
@@ -59,6 +48,15 @@ class usersAPI extends CRUDAPI {
 						"data" => $data,
 						"output" => [
 							"subscription" => $this->Auth->read('subscriptions',$id)->all()[0],
+						],
+					];
+				} else {
+					return [
+						"error" => $this->Language->Field["Already subscribed"],
+						"request" => $request,
+						"data" => $data,
+						"output" => [
+							"subscriptions" => $exist,
 						],
 					];
 				}
@@ -77,9 +75,9 @@ class usersAPI extends CRUDAPI {
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			if(!isset($data['user'])){ $data['user'] = $this->Auth->User['id']; }
 			if(isset($data['category'],$data['sub_category'])){
-				$exist = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `category` = ? AND `sub_category` = ? AND `relationship` = ? AND `link_to` = ?',$data['category'],$data['sub_category'],'users',$data['user'])->fetchAll();
-				if($exist != null){
-					$subscription = $exist->all()[0];
+				$exist = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `category` = ? AND `sub_category` = ? AND `relationship` = ? AND `link_to` = ?',$data['category'],$data['sub_category'],'users',$data['user'])->fetchAll()->all();
+				if(!empty($exist)){
+					$subscription = $exist[0];
 					$this->Auth->delete('subscriptions',$subscription['id']);
 					return [
 						"success" => $this->Language->Field["User was unsubscribed"],
