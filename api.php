@@ -46,14 +46,38 @@ class usersAPI extends CRUDAPI {
 							'relationship' => 'users',
 							'link_to' => $data['user'],
 						]);
-						return [
-							"success" => $this->Language->Field["User was subscribed"],
-							"request" => $request,
-							"data" => $data,
-							"output" => [
-								"subscription" => $this->Auth->read('subscriptions',$id)->all()[0],
-							],
-						];
+						$subscription = $this->Auth->query('SELECT * FROM `subscriptions` WHERE `id` = ?',$id)->fetchAll();
+						if($subscription != null){
+							$subscription = $subscription->all();
+							if(!empty($subscription)){
+								return [
+									"success" => $this->Language->Field["User was subscribed"],
+									"request" => $request,
+									"data" => $data,
+									"output" => [
+										"subscription" => $subscription[0],
+									],
+								];
+							} else {
+								return [
+									"error" => $this->Language->Field["User not subscribed"],
+									"request" => $request,
+									"data" => $data,
+									"output" => [
+										"subscription" => $subscription,
+									],
+								];
+							}
+						} else {
+							return [
+								"error" => $this->Language->Field["An error occured during subscription"],
+								"request" => $request,
+								"data" => $data,
+								"output" => [
+									"subscription" => $subscription,
+								],
+							];
+						}
 					} else {
 						return [
 							"error" => $this->Language->Field["Already subscribed"],
