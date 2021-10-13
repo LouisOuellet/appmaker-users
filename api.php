@@ -145,7 +145,6 @@ class usersAPI extends CRUDAPI {
 				if($exist != null){
 					$subscription = $exist->all();
 					if(!empty($subscription)){
-						var_dump($subscription);
 						$this->Auth->delete('subscriptions',$subscription[0]['id']);
 						return [
 							"success" => $this->Language->Field["User was unsubscribed"],
