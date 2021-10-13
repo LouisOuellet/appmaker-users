@@ -35,5 +35,7 @@
 		"Unknown subscription": "Unknown subscription",
 		"User was unsubscribed": "User was unsubscribed",
 		"Not subscribed": "Not subscribed",
-		"Unknown subscription": "Unknown subscription"
+		"Unknown subscription": "Unknown subscription",
+		"An error occured during subscription": "An error occured during subscription",
+		"User not subscribed": "User not subscribed"
 }
