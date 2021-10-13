@@ -65,6 +65,7 @@ class usersAPI extends CRUDAPI {
 									"data" => $data,
 									"output" => [
 										"subscription" => $subscription,
+										"id" => $id,
 									],
 								];
 							}
@@ -75,6 +76,7 @@ class usersAPI extends CRUDAPI {
 								"data" => $data,
 								"output" => [
 									"subscription" => $subscription,
+									"id" => $id,
 								],
 							];
 						}
