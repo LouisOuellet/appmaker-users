@@ -17,7 +17,7 @@ class usersAPI extends CRUDAPI {
 						return $get;
 					} else {
 						unset($get['success']);
-						$get['error'] = $this->Language->Field["Unable to find subscriptions sub_categories"];
+						$get['error'] = $this->Language->Field["Unable to find subscriptions sub categories"];
 						return $get;
 					}
 				} else {

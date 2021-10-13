@@ -27,5 +27,13 @@
 		"Iswelcomed": "Welcomed",
 		"Tokenlogin": "Token Login",
 		"Tokenapi": "Token API",
-		"Tokenreset": "Token Reset"
+		"Tokenreset": "Token Reset",
+		"Unable to find subscriptions sub categories": "Unable to find subscriptions sub categories",
+		"Unable to find subscriptions categories": "Unable to find subscriptions categories",
+		"Already subscribed": "Already subscribed",
+		"User was subscribed": "User was subscribed",
+		"Unknown subscription": "Unknown subscription",
+		"User was unsubscribed": "User was unsubscribed",
+		"Not subscribed": "Not subscribed",
+		"Unknown subscription": "Unknown subscription"
 }
