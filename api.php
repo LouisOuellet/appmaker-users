@@ -70,24 +70,23 @@ class usersAPI extends CRUDAPI {
 										],
 									];
 								}
-						} else {
-							return [
-								"error" => $this->Language->Field["User not subscribed"],
-								"request" => $request,
-								"data" => $data,
-								"output" => [
-									"subscription" => $subscription,
-									"id" => $id,
-								],
-							];
-						}
+							} else {
+								return [
+									"error" => $this->Language->Field["User not subscribed"],
+									"request" => $request,
+									"data" => $data,
+									"output" => [
+										"subscription" => $subscription,
+										"id" => $id,
+									],
+								];
+							}
 						} else {
 							return [
 								"error" => $this->Language->Field["An error occured during subscription"],
 								"request" => $request,
 								"data" => $data,
 								"output" => [
-									"subscription" => $subscription,
 									"id" => $id,
 								],
 							];
