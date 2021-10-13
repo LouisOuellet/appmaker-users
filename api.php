@@ -151,7 +151,7 @@ class usersAPI extends CRUDAPI {
 							"request" => $request,
 							"data" => $data,
 							"output" => [
-								"subscription" => $subscription,
+								"subscription" => $subscription[0],
 							],
 						];
 					} else {
