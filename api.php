@@ -42,6 +42,9 @@ class usersAPI extends CRUDAPI {
 						"error" => $this->Language->Field["Already subscribed"],
 						"request" => $request,
 						"data" => $data,
+						"output" => [
+							"subscriptions" => $exist->all(),
+						],
 					];
 				} else {
 					$id = $this->Auth->create('subscriptions',[
