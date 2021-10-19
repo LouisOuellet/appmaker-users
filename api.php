@@ -1,6 +1,56 @@
 <?php
 class usersAPI extends CRUDAPI {
 
+	public function read($request = null, $data = null){
+		if(($data != null)||($data == null)){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			$users['raw'] = $this->Auth->query('SELECT * FROM `users` WHERE `isUser` = ?', 'true')->fetchAll();
+			if($users['raw'] != null){
+				$users['raw'] = $users['raw']->all();
+				// Init Result
+				foreach($users['raw'] as $key => $user){
+					$users['dom'][$key] = $this->convertToDOM($user);
+				}
+				$headers = $this->Auth->getHeaders('users',true);
+				foreach($headers as $key => $header){
+					if(!$this->Auth->valid('field',$header,1,'users')){
+						foreach($users['raw'] as $row => $values){
+							unset($users['raw'][$row][$header]);
+							unset($users['dom'][$row][$header]);
+						}
+						unset($headers[$key]);
+					}
+				}
+				$results = [
+					"success" => $this->Language->Field["This request was successfull"],
+					"request" => $request,
+					"data" => $data,
+					"output" => [
+						'headers' => $headers,
+						'raw' => $users['raw'],
+						'dom' => $users['dom'],
+					],
+				];
+			} else {
+				$results = [
+					"error" => $this->Language->Field["Unable to complete the request"],
+					"request" => $request,
+					"data" => $data,
+					"output" => [
+						'raw' => $users['raw'],
+					],
+				];
+			}
+		} else {
+			$results = [
+				"error" => $this->Language->Field["Unable to complete the request"],
+				"request" => $request,
+				"data" => $data,
+			];
+		}
+		return $results;
+	}
+
 	public function get($request = null, $data = null){
 		if($data != null){
 			if(!is_array($data)){ $data = json_decode($data, true); }
