@@ -8,7 +8,10 @@
             "raw": "https:\/\/raw.githubusercontent.com\/LouisOuellet\/"
         }
     },
+    "table": [
+        "users"
+    ],
     "name": "users",
-    "build": 36,
+    "build": 37,
     "version": "21.10-dev"
 }
