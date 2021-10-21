@@ -72,9 +72,9 @@ API.Plugins.users = {
 				},function(result) {
 					var dataset = JSON.parse(result);
 					if(dataset.success != undefined){
-						for(const [key, value] of Object.entries(dataset.output.results)){ API.Helper.set(API.Contents,['data','dom','users',value.username],value); }
+						for(const [key, value] of Object.entries(dataset.output.dom)){ API.Helper.set(API.Contents,['data','dom','users',value.username],value); }
 						for(const [key, value] of Object.entries(dataset.output.raw)){ API.Helper.set(API.Contents,['data','raw','users',value.id],value); }
-						API.Builder.table(card.children('.card-body'), dataset.output.results, {
+						API.Builder.table(card.children('.card-body'), dataset.output.dom, {
 							headers:dataset.output.headers,
 							id:'UsersIndex',
 							modal:true,
@@ -118,8 +118,8 @@ API.Plugins.users = {
 							API.request('users','read',{data:{id:id,key:'username'}},function(result){
 								var dataset = JSON.parse(result);
 								if(dataset.success != undefined){
-									API.GUI.insert(dataset.output.results);
-									API.Helper.set(API.Contents,['data','dom','users',dataset.output.results.username],dataset.output.results);
+									API.GUI.insert(dataset.output.dom);
+									API.Helper.set(API.Contents,['data','dom','users',dataset.output.dom.username],dataset.output.dom);
 									API.Helper.set(API.Contents,['data','raw','users',dataset.output.raw.id],dataset.output.raw);
 								}
 							});
