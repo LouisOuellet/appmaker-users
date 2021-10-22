@@ -239,7 +239,7 @@ class usersAPI extends CRUDAPI {
 				$number    = preg_match('@[0-9]@', $data['password']);
 				$specialChars = preg_match('@[^\w]@', $data['password']);
 				if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($data['password']) > 8) {
-					$data['password'] = password_hash($data['password'], PASSWORD_BCRYPT, array("cost" => 10));
+					$data['password'] = base64_encode(urlencode(password_hash($data['password'], PASSWORD_BCRYPT, array("cost" => 10))));
 					return parent::create($request, $data);
 				} else {
 					return [

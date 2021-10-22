@@ -48,17 +48,17 @@
             "username": "Administrator",
             "type": "MySQL",
             "location": null,
-            "password": "$2y$10$tIZ0VxBRrvD7Q4N1dpIGHeAdfk7Pfi5djBTF\/fS5OvkgTJljln7\/q",
+            "password": "JTI0MnklMjQxMCUyNGZ6NHhSaGlZeGdvY0I5aWVaai5iY3VDSnd1ZDZNMDJscUhCaTNKUSUyRlN2NjUydzZySCUyRmpoTw==",
             "organization": null,
             "supervisor": "1",
             "first_name": null,
             "middle_name": null,
             "last_name": null,
             "initials": null,
-            "job_title": "Administrator",
+            "job_title": null,
             "gender": null,
             "birthday": null,
-            "email": "admin@albconnect.com",
+            "email": null,
             "phone": null,
             "mobile": null,
             "office_num": null,
@@ -70,13 +70,13 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "47acdeccd83acde97202d65d654ac5ef643a9ae9ebce5aca",
-            "api_token": "4108910258d3de0126c66e0b508cd9e2687038e9db4e1987",
+            "token": "69406c9b94df9e95ae651038b2072ade52987c2a0ae43532",
+            "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
             "tokenAPI": null,
             "tokenReset": null,
-            "last_login": "2021-10-21 16:13:51"
+            "last_login": "2021-10-22 11:19:40"
         }
     ]
 }
