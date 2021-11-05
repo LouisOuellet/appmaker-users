@@ -12,6 +12,6 @@
         "users"
     ],
     "name": "users",
-    "build": 50,
-    "version": "21.10-pre-release"
+    "build": 51,
+    "version": "21.11-pre-release"
 }

@@ -58,7 +58,7 @@
             "job_title": null,
             "gender": null,
             "birthday": null,
-            "email": null,
+            "email": "admin@albconnect.com",
             "phone": null,
             "mobile": null,
             "office_num": null,
@@ -70,13 +70,13 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "69406c9b94df9e95ae651038b2072ade52987c2a0ae43532",
+            "token": "dcb36182208b3bdc5d923b3db4d0081ea745bef6ce627744",
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
             "tokenAPI": null,
             "tokenReset": null,
-            "last_login": "2021-10-22 16:11:36"
+            "last_login": "2021-11-04 22:17:36"
         }
     ]
 }
