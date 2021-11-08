@@ -31,7 +31,7 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "51643396370ddd7c772cdc25791f91f4d4af551759323e5a",
+            "token": "",
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
@@ -70,13 +70,13 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "dcb36182208b3bdc5d923b3db4d0081ea745bef6ce627744",
+            "token": "02ba0a70f75422c839925baf41387897a5fa823cb5f4bea0",
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
             "tokenAPI": null,
             "tokenReset": null,
-            "last_login": "2021-11-05 14:04:29"
+            "last_login": "2021-11-08 10:52:55"
         }
     ]
 }
