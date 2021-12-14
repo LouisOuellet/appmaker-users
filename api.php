@@ -8,6 +8,30 @@ class usersAPI extends CRUDAPI {
 			// Load User
 			$data['key'] = 'username';
 			$get = parent::get('users', $data);
+			if(isset($get['output']['this']['dom']['first_name'])){
+				if(isset($get['output']['this']['dom']['name']) && $get['output']['this']['dom']['name'] != ''){ $get['output']['this']['dom']['name'] .= ' '; }
+				$get['output']['this']['dom']['name'] .= $get['output']['this']['dom']['first_name'];
+			}
+			if(isset($get['output']['this']['dom']['middle_name'])){
+				if(isset($get['output']['this']['dom']['name']) && $get['output']['this']['dom']['name'] != ''){ $get['output']['this']['dom']['name'] .= ' '; }
+				$get['output']['this']['dom']['name'] .= $get['output']['this']['dom']['middle_name'];
+			}
+			if(isset($get['output']['this']['dom']['last_name'])){
+				if(isset($get['output']['this']['dom']['name']) && $get['output']['this']['dom']['name'] != ''){ $get['output']['this']['dom']['name'] .= ' '; }
+				$get['output']['this']['dom']['name'] .= $get['output']['this']['dom']['last_name'];
+			}
+			if(isset($get['output']['this']['raw']['first_name'])){
+				if(isset($get['output']['this']['raw']['name']) && $get['output']['this']['raw']['name'] != ''){ $get['output']['this']['raw']['name'] .= ' '; }
+				$get['output']['this']['raw']['name'] .= $get['output']['this']['raw']['first_name'];
+			}
+			if(isset($get['output']['this']['raw']['middle_name'])){
+				if(isset($get['output']['this']['raw']['name']) && $get['output']['this']['raw']['name'] != ''){ $get['output']['this']['raw']['name'] .= ' '; }
+				$get['output']['this']['raw']['name'] .= $get['output']['this']['raw']['middle_name'];
+			}
+			if(isset($get['output']['this']['raw']['last_name'])){
+				if(isset($get['output']['this']['raw']['name']) && $get['output']['this']['raw']['name'] != ''){ $get['output']['this']['raw']['name'] .= ' '; }
+				$get['output']['this']['raw']['name'] .= $get['output']['this']['raw']['last_name'];
+			}
 			// Build Relations
 			$get = $this->buildRelations($get);
 			return $get;
