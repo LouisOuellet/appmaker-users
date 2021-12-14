@@ -5,8 +5,6 @@ class usersAPI extends CRUDAPI {
 		if(isset($data)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
 			$this->Auth->setLimit(0);
-			// Scan for pictures
-			$this->scan($data['id']);
 			// Load User
 			$get = parent::get('users', $data);
 			// Build Relations
