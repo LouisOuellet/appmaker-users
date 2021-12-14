@@ -1,6 +1,20 @@
 <?php
 class usersAPI extends CRUDAPI {
 
+	public function get($request = null, $data = null){
+		if(isset($data)){
+			if(!is_array($data)){ $data = json_decode($data, true); }
+			$this->Auth->setLimit(0);
+			// Scan for pictures
+			$this->scan($data['id']);
+			// Load User
+			$get = parent::get('users', $data);
+			// Build Relations
+			$get = $this->buildRelations($get);
+			return $get;
+		}
+	}
+
 	public function read($request = null, $data = null){
 		if(($data != null)||($data == null)){
 			if(!is_array($data)){ $data = json_decode($data, true); }
