@@ -155,17 +155,47 @@ API.Plugins.users = {
 									});
 								});
 							}
+							// Useranme
+							options.field = "username";
+							if(API.Helper.isSet(options,['td'])){ delete options.td; }
+							API.GUI.Layouts.details.data(data,layout,options);
 							// Name
 							options.field = "name";
 							if(API.Helper.isSet(options,['td'])){ delete options.td; }
 							API.GUI.Layouts.details.data(data,layout,options);
-							// Address
-							options.field = "address";
-							options.td = '<td data-plugin="users">';
-								options.td += '<span data-plugin="users" data-key="address">'+data.this.dom.address+'</span>, ';
-								options.td += '<span data-plugin="users" data-key="city">'+data.this.dom.city+'</span>, ';
-								options.td += '<span data-plugin="users" data-key="zipcode">'+data.this.dom.zipcode+'</span>';
-							options.td += '</td>';
+							// Phone
+							if(API.Auth.validate('custom', 'users_phone', 1)){
+								options.field = "phone";
+								options.td = '';
+								options.td += '<td>';
+									options.td += '<div class="row">';
+										if(data.this.dom.phone != ''){
+											options.td += '<div class="col-md-6 col-sm-12 p-1">';
+												options.td += '<strong><i class="fas fa-phone mr-1"></i></strong><a href="tel:'+data.this.dom.phone+'" data-plugin="users" data-key="phone">'+data.this.dom.phone+'</a>';
+											options.td += '</div>';
+										}
+										if(data.this.dom.mobile != ''){
+											options.td += '<div class="col-md-6 col-sm-12 p-1">';
+												options.td += '<strong><i class="fas fa-mobile mr-1"></i></strong><a href="tel:'+data.this.dom.mobile+'" data-plugin="users" data-key="mobile">'+data.this.dom.mobile+'</a>';
+											options.td += '</div>';
+										}
+										if(data.this.dom.office_num != ''){
+											options.td += '<div class="col-md-6 col-sm-12 p-1">';
+												options.td += '<strong><i class="fas fa-phone mr-1"></i></strong><a href="tel:'+data.this.dom.office_num+'" data-plugin="users" data-key="office_num">'+data.this.dom.office_num+'</a>';
+											options.td += '</div>';
+										}
+										if(data.this.dom.other_num != ''){
+											options.td += '<div class="col-md-6 col-sm-12 p-1">';
+												options.td += '<strong><i class="fas fa-phone mr-1"></i></strong><a href="tel:'+data.this.dom.other_num+'" data-plugin="users" data-key="other_num">'+data.this.dom.other_num+'</a>';
+											options.td += '</div>';
+										}
+									options.td += '</div>';
+								options.td += '</td>';
+								API.GUI.Layouts.details.data(data,layout,options,function(data,layout,tr){});
+							}
+							// Email
+							options.field = "email";
+							options.td = '<td><strong><i class="fas fa-envelope mr-1"></i></strong><a href="mailto:'+data.this.dom.email+'" data-plugin="users" data-key="'+options.field+'">'+data.this.dom.email+'</a></td>';
 							API.GUI.Layouts.details.data(data,layout,options,function(data,layout,tr){});
 							// Notes
 							if(API.Helper.isSet(API.Plugins,['notes']) && API.Auth.validate('custom', 'users_notes', 1)){
