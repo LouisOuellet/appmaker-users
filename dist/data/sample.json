@@ -31,13 +31,13 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": null,
+            "token": "1e97f76cc388af4c38a9562a495cd1836bf45e5cd2604820",
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
             "tokenAPI": null,
             "tokenReset": null,
-            "last_login": null
+            "last_login": "2022-01-06 09:59:13"
         },
         {
             "id": 2,
@@ -70,13 +70,13 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "c05e616bd23bcf2647844cd9e493f3df2e8d91152b2f1650",
+            "token": "3b0a790dfde925d3e142d65ba7f22d30267c860caea911d7",
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
             "tokenAPI": null,
             "tokenReset": null,
-            "last_login": "2021-12-14 12:28:48"
+            "last_login": "2022-01-06 12:05:44"
         },
         {
             "id": 3,
@@ -109,7 +109,7 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "2dbcae0e0ce1fb8979e3e880d740a245e3ecef4b8708e9f9",
+            "token": null,
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
@@ -148,7 +148,7 @@
             "isUser": "true",
             "isWelcomed": null,
             "isActive": "true",
-            "token": "2dbcae0e0ce1fb8979e3e880d740a245e3ecef4b8708e9f9",
+            "token": null,
             "api_token": null,
             "reset_token": null,
             "tokenLogin": null,
